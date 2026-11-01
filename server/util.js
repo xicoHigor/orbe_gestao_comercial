@@ -1,5 +1,6 @@
 // Utilidades compartilhadas: datas no fuso de São Paulo, arredondamento monetário e validação de documentos.
 const dayFormat = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' });
+
 /** Data atual (AAAA-MM-DD) em America/Sao_Paulo. */
 export const spToday = (date = new Date()) => dayFormat.format(date);
 /** Mês atual (AAAA-MM) em America/Sao_Paulo. */
