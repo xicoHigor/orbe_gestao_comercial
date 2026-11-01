@@ -43,15 +43,27 @@ if (hasSingleInstance) {
     process.env.APP_URL = process.env.APP_URL || appOrigin;
 
     mainWindow = new BrowserWindow({
-      width: 1440, height: 940, minWidth: 900, minHeight: 650,
-      show: false, autoHideMenuBar: true, backgroundColor: '#f7f8fc',
-      webPreferences: { contextIsolation: true, nodeIntegration: false, sandbox: true, webSecurity: true },
+      width: 1440,
+      height: 940,
+      minWidth: 900,
+      minHeight: 650,
+      show: false,
+      autoHideMenuBar: true,
+      backgroundColor: '#f7f8fc',
+      webPreferences: {
+        contextIsolation: true,
+        nodeIntegration: false,
+        sandbox: true,
+        webSecurity: true,
+      },
     });
 
     mainWindow.webContents.setWindowOpenHandler(({ url }) => {
       try {
         const target = new URL(url);
-        if (target.protocol === 'https:' && target.hostname === 'wa.me') void shell.openExternal(target.href);
+        if (target.protocol === 'https:' && target.hostname === 'wa.me') {
+          void shell.openExternal(target.href);
+        }
       } catch {}
       return { action: 'deny' };
     });
